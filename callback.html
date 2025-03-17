@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Auth Redirect</title>
+</head>
+<body>
+    <script>
+        // Extract the access token from the URL fragment
+        const hash = window.location.hash.substring(1);
+        const params = new URLSearchParams(hash);
+        const accessToken = params.get("access_token");
+
+        if (accessToken) {
+            localStorage.setItem("spotify_access_token", accessToken);
+            alert("Spotify authentication successful! You can now close this tab.");
+        } else {
+            alert("Authentication failed. Please try again.");
+        }
+
+        // Redirect back to Discord or close tab
+        window.close();
+    </script>
+</body>
+</html>
